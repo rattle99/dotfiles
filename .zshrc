@@ -1,4 +1,5 @@
 neofetch
+
 # figlet -ctf script "Hello Rattle"; echo ' '
 
 # If you come from bash you might have to change your $PATH.
@@ -6,6 +7,13 @@ neofetch
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/rattle/.oh-my-zsh
+
+# Path to flutter installation.
+  export FLUTTER=/home/rattle/Programming/flutter/bin
+  export PATH=$FLUTTER:$PATH
+
+#  export ANDOIRD_HOME=/home/rattle/Programming/AndroidSDK/Sdk 
+#  export PATH=$ANDROID_HOME:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
