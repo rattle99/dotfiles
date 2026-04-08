@@ -69,7 +69,7 @@ install_packages() {
         fi
 
         local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd bat)
-        local casks=(nikitabobko/tap/aerospace)
+        local casks=(nikitabobko/tap/aerospace claude-code)
 
         for pkg in "${packages[@]}"; do
             if ! brew list "$pkg" &>/dev/null; then
