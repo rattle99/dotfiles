@@ -68,7 +68,7 @@ install_packages() {
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 
-        local packages=(zsh neovim vim kitty zellij yazi)
+        local packages=(zsh neovim vim kitty zellij yazi git-delta)
         local casks=(nikitabobko/tap/aerospace)
 
         for pkg in "${packages[@]}"; do
@@ -90,7 +90,7 @@ install_packages() {
         done
 
     elif [ "$OS" = "Linux" ]; then
-        local packages=(zsh neovim vim kitty zellij yazi)
+        local packages=(zsh neovim vim kitty zellij yazi git-delta)
 
         if command -v apt &>/dev/null; then
             for pkg in "${packages[@]}"; do
