@@ -51,6 +51,11 @@ For example, `nvim/.config/nvim/init.lua` symlinks to `~/.config/nvim/init.lua`.
 | nvim | All | Neovim (Lua config + Lazy.nvim plugins) |
 | vim | All | Vim (vimrc + vim-plug plugins) |
 | aerospace | macOS | Tiling window manager |
+| i3 | Linux | Tiling window manager (TODO) |
+| polybar | Linux | Status bar (TODO) |
+| picom | Linux | Compositor (TODO) |
+| dunst | Linux | Notification daemon (TODO) |
+| rofi | Linux | Application launcher (TODO) |
 
 ## Adding a new tool
 
