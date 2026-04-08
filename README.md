@@ -45,7 +45,7 @@ For example, `nvim/.config/nvim/init.lua` symlinks to `~/.config/nvim/init.lua`.
 | Package | Machines | Description |
 |---|---|---|
 | zsh | All | Shell config (.zshrc, .zprofile) |
-| ssh | All | SSH host config |
+| ssh | macOS | SSH host config |
 | kitty | All | Terminal emulator |
 | zellij | All | Terminal multiplexer |
 | nvim | All | Neovim (Lua config + Lazy.nvim plugins) |
