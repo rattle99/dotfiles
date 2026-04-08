@@ -131,10 +131,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - zsh)"
 
 
-# For zsh users
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
 # Created by `pipx` on 2025-12-08 17:17:45
 export PATH="$PATH:$HOME/.local/bin"
 
