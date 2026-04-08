@@ -68,7 +68,7 @@ install_packages() {
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 
-        local packages=(zsh git neovim vim kitty zellij yazi)
+        local packages=(zsh neovim vim kitty zellij yazi)
         local casks=(nikitabobko/tap/aerospace)
 
         for pkg in "${packages[@]}"; do
@@ -90,7 +90,7 @@ install_packages() {
         done
 
     elif [ "$OS" = "Linux" ]; then
-        local packages=(zsh git neovim vim kitty zellij yazi)
+        local packages=(zsh neovim vim kitty zellij yazi)
 
         if command -v apt &>/dev/null; then
             for pkg in "${packages[@]}"; do
@@ -162,10 +162,9 @@ link_configs() {
     # Home-level symlinks
     backup_and_link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
     backup_and_link "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
-    backup_and_link "$DOTFILES_DIR/ssh/.ssh/config" "$HOME/.ssh/config"
-
     # macOS only
     if [ "$OS" = "Darwin" ]; then
+        backup_and_link "$DOTFILES_DIR/ssh/.ssh/config" "$HOME/.ssh/config"
         backup_and_link "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
     fi
 
