@@ -4,8 +4,16 @@ Personal dotfiles managed with raw git and symlinks. Repo structure follows [GNU
 
 ## Setup
 
+One-liner (clones the repo and runs setup):
+
 ```bash
-git clone <repo-url> ~/Projects/Rattle/dotfiles
+bash <(curl -fsSL https://raw.githubusercontent.com/rattle99/dotfiles/main/setup.sh)
+```
+
+Or manually:
+
+```bash
+git clone https://github.com/rattle99/dotfiles ~/Projects/Rattle/dotfiles
 cd ~/Projects/Rattle/dotfiles
 chmod +x setup.sh
 ./setup.sh

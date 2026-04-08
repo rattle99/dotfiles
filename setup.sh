@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
-DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_URL="https://github.com/rattle99/dotfiles"
+DOTFILES_DIR="$HOME/Projects/Rattle/dotfiles"
+
+# Clone repo if not already present (supports curl | sh usage)
+if [ ! -d "$DOTFILES_DIR" ]; then
+    echo "Cloning dotfiles repo..."
+    git clone "$REPO_URL" "$DOTFILES_DIR"
+    cd "$DOTFILES_DIR"
+elif [ -f "$0" ] && [ "$(cd "$(dirname "$0")" && pwd)" = "$DOTFILES_DIR" ]; then
+    DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+fi
 BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d_%H%M%S)"
 OS="$(uname -s)"
 
