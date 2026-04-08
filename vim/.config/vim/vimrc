@@ -1,0 +1,114 @@
+" ── Plugins (managed by vim-plug) ─────────────────────────────────────────────
+" Run :PlugInstall to install, :PlugUpdate to update, :PlugClean to remove
+
+call plug#begin('~/.config/vim/plugged')
+Plug 'lambdalisue/fern.vim'                  " async file tree sidebar
+Plug 'lambdalisue/nerdfont.vim'              " filename-to-icon mapping table
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'" renders nerd font icons in fern
+Plug 'lambdalisue/fern-git-status.vim'       " git status markers in fern tree
+Plug 'jiangmiao/auto-pairs'                  " auto-close brackets and quotes
+Plug 'vim-airline/vim-airline'               " rich status bar at the bottom
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf binary integration
+Plug 'junegunn/fzf.vim'                      " fzf commands for vim
+Plug 'prabirshrestha/vim-lsp'                " LSP client — talks to language servers
+Plug 'mattn/vim-lsp-settings'                " auto-detect and install LSP servers
+Plug 'prabirshrestha/asyncomplete.vim'       " async autocomplete popup framework
+Plug 'prabirshrestha/asyncomplete-lsp.vim'   " bridge: feeds LSP completions into popup
+call plug#end()
+
+" ── Plugin settings ───────────────────────────────────────────────────────────
+
+" Fern: use nerd font icons instead of plain text in file tree
+let g:fern#renderer = 'nerdfont'
+
+" Airline: custom theme matching our colorscheme, powerline arrow separators,
+" and buffer list shown as tabs at the top
+let g:airline_theme = 'shado'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" ── Leader key ────────────────────────────────────────────────────────────────
+" Space as leader — used as a prefix for all custom keybindings.
+" Only active in normal mode, space still types a space in insert mode.
+
+let mapleader = " "
+
+" ── Keybindings ───────────────────────────────────────────────────────────────
+" All use <leader> (space) as prefix. nnoremap = normal mode, non-recursive map.
+" <CR> at the end simulates pressing Enter.
+
+nnoremap <leader>e :Fern . -drawer -toggle<CR> " toggle file tree sidebar
+nnoremap <leader>q :bd<CR>                      " close current buffer (file)
+nnoremap <leader>n :bn<CR>                      " next buffer
+nnoremap <leader>p :bp<CR>                      " previous buffer
+nnoremap <leader>w :w<CR>                       " save file
+nnoremap <leader>f :Files<CR>                    " fuzzy search filenames in project
+nnoremap <leader>g :Rg<CR>                       " fuzzy search text across all files
+nnoremap <leader>b :Buffers<CR>                  " fuzzy search open buffers
+
+" ── Syntax and colors ─────────────────────────────────────────────────────────
+
+syntax on            " enable syntax highlighting engine
+
+" Terminal capability overrides for kitty:
+" termguicolors — use 24-bit hex colors (guifg/guibg) instead of 256-color palette
+" t_ZH/t_ZR   — escape sequences for italic on/off
+" t_8f/t_8b   — escape sequences for 24-bit foreground/background color
+set termguicolors
+let &t_ZH="\<Esc>[3m"
+let &t_ZR="\<Esc>[23m"
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+
+colorscheme shado    " custom colorscheme matching kitty's shadotheme palette
+
+" ── Editor settings ───────────────────────────────────────────────────────────
+
+set number           " show absolute line number on the current line
+set relativenumber   " show relative line numbers above/below cursor
+
+" ── Folding ───────────────────────────────────────────────────────────────────
+" Fold based on indentation — works well for Python where indent = structure.
+" Starts fully unfolded. Use zM to collapse all, zR to expand all, za to toggle.
+
+set foldmethod=indent  " create folds based on indentation levels
+set foldlevelstart=99  " start with all folds open
+
+" ── LSP settings ──────────────────────────────────────────────────────────────
+" vim-lsp connects to language servers (pyright for Python).
+" Provides autocomplete, hover docs, go-to-definition, diagnostics.
+
+" Show diagnostic signs in the gutter (errors, warnings)
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1       " show diagnostic message at cursor
+let g:lsp_preview_float = 0                  " use preview split instead of popup
+let g:lsp_peek_alignment = 'top'             " open peek at the top
+
+" Register pyright as the Python language server
+if executable('pyright-langserver')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyright',
+    \ 'cmd': {server_info->['pyright-langserver', '--stdio']},
+    \ 'allowlist': ['python'],
+    \ })
+endif
+
+" LSP keybindings — only active when an LSP server is attached
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete         " enable omni-completion via LSP
+  nmap <buffer> gd <plug>(lsp-definition)       " go to definition
+  nmap <buffer> gr <plug>(lsp-references)       " find all references
+  nmap <buffer> <leader>h <plug>(lsp-hover)            " quick hover popup (not scrollable)
+  nmap <buffer> <leader>H <plug>(lsp-peek-definition)  " peek definition in split (scrollable)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)   " rename symbol across files
+  nmap <buffer> <leader>ca <plug>(lsp-code-action) " code actions (quick fixes)
+  nmap <buffer> [d <plug>(lsp-previous-diagnostic) " jump to previous diagnostic
+  nmap <buffer> ]d <plug>(lsp-next-diagnostic)     " jump to next diagnostic
+endfunction
+
+" Apply LSP keybindings when a server attaches to a buffer
+augroup lsp_install
+  au!
+  au User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
