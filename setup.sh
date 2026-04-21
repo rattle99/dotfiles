@@ -173,6 +173,11 @@ link_configs() {
     backup_and_link "$DOTFILES_DIR/zellij/.config/zellij" "$HOME/.config/zellij"
     backup_and_link "$DOTFILES_DIR/nvim/.config/nvim" "$HOME/.config/nvim"
 
+    # Linux only
+    if [ "$OS" = "Linux" ]; then
+        backup_and_link "$DOTFILES_DIR/dunst/.config/dunst" "$HOME/.config/dunst"
+    fi
+
     # File-level symlinks (dir has generated data too)
     mkdir -p "$HOME/.config/vim/colors"
     backup_and_link "$DOTFILES_DIR/vim/.config/vim/vimrc" "$HOME/.config/vim/vimrc"

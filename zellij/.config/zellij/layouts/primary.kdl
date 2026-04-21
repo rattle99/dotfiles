@@ -14,7 +14,9 @@ layout {
                 pane size="70%" cwd="~/Programming" command="zsh" {
                     args "-ic" "y; exec zsh -i"
                 }
-                pane size="30%" command="claude"
+                pane size="30%" command="claude" {
+                    start_suspended true
+                }
             }
             pane size="30%" split_direction="vertical" {
                 pane size="60%"
@@ -26,6 +28,8 @@ layout {
         pane
     }
     tab name="misc" {
-        pane command="btop"
+        pane command="btop" {
+            start_suspended true
+        }
     }
 }

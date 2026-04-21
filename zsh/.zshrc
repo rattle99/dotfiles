@@ -104,7 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="lsd"
+alias zj="zellij"
 alias zjclean="zellij kill-all-sessions -y 2>/dev/null; echo 'cleaned'"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Yazi wrapper - cd into the directory when you quit (press q)
 function y() {
