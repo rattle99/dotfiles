@@ -202,10 +202,18 @@ link_configs() {
 
 post_install() {
     info "Installing vim plugins..."
-    vim +PlugInstall +qall 2>/dev/null || warn "vim plugin install failed (vim may not be configured yet)"
+    if vim +PlugInstall +qall &>/dev/null 2>&1; then
+        info "vim plugins installed"
+    else
+        warn "vim plugin install failed (vim may not be configured yet)"
+    fi
 
     info "Installing nvim plugins..."
-    nvim --headless "+Lazy! sync" +qa 2>/dev/null || warn "nvim plugin install failed (nvim may not be configured yet)"
+    if nvim --headless "+Lazy! sync" +qa &>/dev/null 2>&1; then
+        info "nvim plugins installed"
+    else
+        warn "nvim plugin install failed (nvim may not be configured yet)"
+    fi
 }
 
 # ============================================================
