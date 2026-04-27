@@ -94,18 +94,24 @@ install_packages() {
 
         if command -v apt &>/dev/null; then
             for pkg in "${packages[@]}"; do
-                if ! dpkg -l "$pkg" &>/dev/null 2>&1; then
+                if ! dpkg -l "$pkg" &>/dev/null 2>&1 && ! command -v "$pkg" &>/dev/null; then
                     info "Installing $pkg..."
-                    sudo apt install -y "$pkg"
+                    if ! sudo apt install -y "$pkg" 2>/dev/null; then
+                        warn "$pkg not found in apt. Install it manually (e.g. via snap, cargo, or binary)."
+                        read -rp "Press Enter once $pkg is installed (or to skip)..."
+                    fi
                 else
                     info "$pkg already installed"
                 fi
             done
         elif command -v dnf &>/dev/null; then
             for pkg in "${packages[@]}"; do
-                if ! rpm -q "$pkg" &>/dev/null 2>&1; then
+                if ! rpm -q "$pkg" &>/dev/null 2>&1 && ! command -v "$pkg" &>/dev/null; then
                     info "Installing $pkg..."
-                    sudo dnf install -y "$pkg"
+                    if ! sudo dnf install -y "$pkg" 2>/dev/null; then
+                        warn "$pkg not found in dnf. Install it manually."
+                        read -rp "Press Enter once $pkg is installed (or to skip)..."
+                    fi
                 else
                     info "$pkg already installed"
                 fi
