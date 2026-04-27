@@ -140,7 +140,12 @@ eval "$(pyenv init - zsh)"
 export PATH="$PATH:$HOME/.local/bin"
 
 # fzf shell integration (Ctrl+R = history, Ctrl+T = files, Alt+C = cd)
-source <(fzf --zsh)
+if fzf --zsh &>/dev/null 2>&1; then
+  source <(fzf --zsh)
+else
+  source /usr/share/doc/fzf/examples/key-bindings.zsh 2>/dev/null
+  source /usr/share/doc/fzf/examples/completion.zsh 2>/dev/null
+fi
 
 # Use fd as fzf's file finder (faster, respects .gitignore)
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
