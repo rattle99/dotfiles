@@ -138,6 +138,7 @@ eval "$(pyenv init - zsh)"
 
 # Created by `pipx` on 2025-12-08 17:17:45
 export PATH="$PATH:$HOME/.local/bin"
+export PIPX_DEFAULT_PYTHON="$(pyenv which python)"
 
 # fzf shell integration (Ctrl+R = history, Ctrl+T = files, Alt+C = cd)
 if fzf --zsh &>/dev/null 2>&1; then
