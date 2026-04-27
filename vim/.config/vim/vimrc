@@ -60,7 +60,7 @@ let &t_ZR="\<Esc>[23m"
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
-colorscheme shado    " custom colorscheme matching kitty's shadotheme palette
+colorscheme colorice
 
 " ── Editor settings ───────────────────────────────────────────────────────────
 

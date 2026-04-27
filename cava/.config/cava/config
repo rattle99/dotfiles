@@ -28,4 +28,5 @@ noise_reduction = 77
 4 = 1
 5 = 1
 
-include = ~/.config/cava/colorice-colors.conf
+[color]
+theme = colorice.cava
