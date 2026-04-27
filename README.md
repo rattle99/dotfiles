@@ -7,7 +7,7 @@ Personal dotfiles managed with raw git and symlinks. Repo structure follows [GNU
 One-liner (clones the repo and runs setup):
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/rattle99/dotfiles/main/setup.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/rattle99/dotfiles/master/setup.sh)
 ```
 
 Or manually:
