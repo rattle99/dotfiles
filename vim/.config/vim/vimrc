@@ -23,7 +23,7 @@ let g:fern#renderer = 'nerdfont'
 
 " Airline: custom theme matching our colorscheme, powerline arrow separators,
 " and buffer list shown as tabs at the top
-let g:airline_theme = 'shado'
+let g:airline_theme = 'colorice'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
