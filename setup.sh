@@ -68,7 +68,7 @@ install_packages() {
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 
-        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd bat)
+        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd bat cava)
         local casks=(nikitabobko/tap/aerospace claude-code font-jetbrains-mono-nerd-font)
 
         for pkg in "${packages[@]}"; do
@@ -90,7 +90,7 @@ install_packages() {
         done
 
     elif [ "$OS" = "Linux" ]; then
-        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd-find bat)
+        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd-find bat cava)
 
         if command -v apt &>/dev/null; then
             for pkg in "${packages[@]}"; do
@@ -182,6 +182,10 @@ link_configs() {
     mkdir -p "$HOME/.config/vim/colors"
     backup_and_link "$DOTFILES_DIR/vim/.config/vim/vimrc" "$HOME/.config/vim/vimrc"
     backup_and_link "$DOTFILES_DIR/vim/.config/vim/colors/shado.vim" "$HOME/.config/vim/colors/shado.vim"
+
+    mkdir -p "$HOME/.config/cava"
+    backup_and_link "$DOTFILES_DIR/cava/.config/cava/config" "$HOME/.config/cava/config"
+    backup_and_link "$DOTFILES_DIR/cava/.config/cava/colorice-colors.conf" "$HOME/.config/cava/colorice-colors.conf"
 }
 
 # ============================================================
