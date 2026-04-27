@@ -40,4 +40,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- ── Colorscheme ──────────────────────────────────────────────────────────────
-vim.cmd("colorscheme colorice")
+local ok = pcall(vim.cmd, "colorscheme colorice")
+if not ok then vim.cmd("colorscheme shado") end
