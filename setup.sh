@@ -182,7 +182,13 @@ link_configs() {
     # Linux only
     if [ "$OS" = "Linux" ]; then
         backup_and_link "$DOTFILES_DIR/dunst/.config/dunst" "$HOME/.config/dunst"
+        backup_and_link "$DOTFILES_DIR/i3/.config/i3" "$HOME/.config/i3"
+        backup_and_link "$DOTFILES_DIR/polybar/.config/polybar" "$HOME/.config/polybar"
+        backup_and_link "$DOTFILES_DIR/picom/.config/picom.conf" "$HOME/.config/picom.conf"
     fi
+
+    # All platforms
+    backup_and_link "$DOTFILES_DIR/micro/.config/micro" "$HOME/.config/micro"
 
     # File-level symlinks (dir has generated data too)
     mkdir -p "$HOME/.config/vim/colors"
