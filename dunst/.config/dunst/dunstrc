@@ -1,3 +1,5 @@
+# colorice theme — shado default (regenerate via: colorice <wallpaper> --apply)
+
 [global]
     monitor = 0
     follow = mouse
@@ -10,7 +12,7 @@
 
     # Appearance
     frame_width = 2
-    frame_color = "#8897F4"
+    frame_color = "#bd93f9"
     separator_height = 2
     separator_color = frame
     corner_radius = 8
@@ -46,18 +48,18 @@
 
 [urgency_low]
     background = "#191724"
-    foreground = "#e3c7fc"
-    frame_color = "#c4a7e7"
+    foreground = "#a8899c"
+    frame_color = "#a8899c"
     timeout = 5
 
 [urgency_normal]
     background = "#191724"
     foreground = "#e3c7fc"
-    frame_color = "#8897F4"
+    frame_color = "#bd93f9"
     timeout = 10
 
 [urgency_critical]
-    background = "#191724"
-    foreground = "#e3c7fc"
-    frame_color = "#FF4971"
+    background = "#B52A5B"
+    foreground = "#f1c4e0"
+    frame_color = "#B52A5B"
     timeout = 0

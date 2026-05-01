@@ -190,7 +190,9 @@ link_configs() {
     fi
 
     # All platforms
-    backup_and_link "$DOTFILES_DIR/micro/.config/micro" "$HOME/.config/micro"
+    mkdir -p "$HOME/.config/micro"
+    backup_and_link "$DOTFILES_DIR/micro/.config/micro/bindings.json" "$HOME/.config/micro/bindings.json"
+    backup_and_link "$DOTFILES_DIR/micro/.config/micro/settings.json" "$HOME/.config/micro/settings.json"
 
     # File-level symlinks (dir has generated data too)
     mkdir -p "$HOME/.config/vim/colors"
