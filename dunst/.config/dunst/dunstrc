@@ -63,3 +63,16 @@
     foreground = "#f1c4e0"
     frame_color = "#B52A5B"
     timeout = 0
+
+[battery_warning]
+    appname = battery-monitor
+    summary = "Battery Low"
+    urgency = normal
+    frame_color = "#8897F4"
+    timeout = 10
+
+[battery_critical]
+    appname = battery-monitor
+    summary = "Battery Critical"
+    urgency = critical
+    timeout = 0
