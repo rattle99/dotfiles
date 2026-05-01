@@ -68,7 +68,7 @@ bindsym $mod+period exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/414569.
 
 # scratchpad terminal
 for_window [instance="scratchpad"] floating enable, move scratchpad, resize set 900 600, move position center
-exec --no-startup-id kitty --instance-name scratchpad
+exec --no-startup-id kitty --name scratchpad
 bindsym $mod+grave [instance="scratchpad"] scratchpad show, move position center
 
 # dunst notification history
