@@ -145,6 +145,14 @@ install_oh_my_zsh() {
     else
         info "zsh-syntax-highlighting already installed"
     fi
+
+    local custom_themes="$HOME/.oh-my-zsh/custom/themes"
+    if [ ! -d "$custom_themes/powerlevel10k" ]; then
+        info "Installing powerlevel10k..."
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$custom_themes/powerlevel10k"
+    else
+        info "powerlevel10k already installed"
+    fi
 }
 
 install_vim_plug() {
@@ -168,6 +176,7 @@ link_configs() {
     # Home-level symlinks
     backup_and_link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
     backup_and_link "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
+    backup_and_link "$DOTFILES_DIR/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
     # macOS only
     if [ "$OS" = "Darwin" ]; then
         backup_and_link "$DOTFILES_DIR/ssh/.ssh/config" "$HOME/.ssh/config"
