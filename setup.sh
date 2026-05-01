@@ -68,7 +68,7 @@ install_packages() {
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 
-        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd bat cava)
+        local packages=(zsh neovim vim kitty zellij yazi git-delta lsd fzf fd bat cava pyright)
         local casks=(nikitabobko/tap/aerospace claude-code font-jetbrains-mono-nerd-font)
 
         for pkg in "${packages[@]}"; do
