@@ -31,6 +31,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -63,6 +64,14 @@ tiling_drag modifier titlebar
 
 # lockscreen
 bindsym $mod+period exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/414569.png
+
+# scratchpad terminal
+for_window [instance="scratchpad"] floating enable, move scratchpad, resize set 900 600, move position center
+exec --no-startup-id kitty --instance-name scratchpad
+bindsym $mod+grave [instance="scratchpad"] scratchpad show, move position center
+
+# dunst notification history
+bindsym $mod+n exec dunstctl history-pop
 
 # start a terminal
 bindsym $mod+Return exec kitty
