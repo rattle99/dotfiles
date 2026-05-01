@@ -199,9 +199,7 @@ link_configs() {
     mkdir -p "$HOME/.config/vim/autoload/airline/themes"
     backup_and_link "$DOTFILES_DIR/vim/.config/vim/autoload/airline/themes/colorice.vim" "$HOME/.config/vim/autoload/airline/themes/colorice.vim"
 
-    mkdir -p "$HOME/.config/cava/themes"
     backup_and_link "$DOTFILES_DIR/cava/.config/cava/config" "$HOME/.config/cava/config"
-    backup_and_link "$DOTFILES_DIR/cava/.config/cava/themes/colorice.cava" "$HOME/.config/cava/themes/colorice.cava"
 }
 
 # ============================================================

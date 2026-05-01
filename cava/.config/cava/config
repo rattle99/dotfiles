@@ -1,3 +1,5 @@
+# colorice theme — shado default (regenerate via: colorice <wallpaper> --apply)
+
 [general]
 mode = normal
 framerate = 60
@@ -29,4 +31,16 @@ noise_reduction = 65
 5 = 0.8
 
 [color]
-theme = colorice.cava
+background = '#191724'
+foreground = '#e3c7fc'
+
+gradient = 1
+gradient_count = 8
+gradient_color_1 = '#B52A5B'
+gradient_color_2 = '#FF4971'
+gradient_color_3 = '#8897F4'
+gradient_color_4 = '#bd93f9'
+gradient_color_5 = '#E9729D'
+gradient_color_6 = '#F18FB0'
+gradient_color_7 = '#f1c4e0'
+gradient_color_8 = '#e3c7fc'
