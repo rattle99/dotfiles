@@ -11,5 +11,4 @@ exec dmenu_run \
     -nf "$NF" \
     -sb "$SB" \
     -sf "$SF" \
-    -h 28 \
     "$@"
