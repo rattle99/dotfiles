@@ -1,6 +1,7 @@
 " ── Plugins (managed by vim-plug) ─────────────────────────────────────────────
 " Run :PlugInstall to install, :PlugUpdate to update, :PlugClean to remove
 
+set runtimepath+=~/.config/vim
 call plug#begin('~/.config/vim/plugged')
 Plug 'lambdalisue/fern.vim'                  " async file tree sidebar
 Plug 'lambdalisue/nerdfont.vim'              " filename-to-icon mapping table
