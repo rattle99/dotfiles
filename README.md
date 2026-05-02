@@ -1,6 +1,8 @@
 # Dotfiles
-
 Personal dotfiles managed with raw git and symlinks. Repo structure follows [GNU Stow](https://www.gnu.org/software/stow/) conventions for future compatibility.
+
+<img width="1920" height="1080" alt="image2" src="https://github.com/user-attachments/assets/249a5789-ea09-452b-b98a-27fb2ab08159" />
+<img width="1920" height="1079" alt="image3" src="https://github.com/user-attachments/assets/7c94e296-d7a1-4cbc-ba5e-ad475f7b8a79" />
 
 ## Setup
 
